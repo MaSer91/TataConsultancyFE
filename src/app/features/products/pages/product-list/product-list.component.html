@@ -1,0 +1,15 @@
+<div class="container">
+    <input type="text" placeholder="Buscar producto..." [(ngModel)]="searchTerm" (input)="searchProducts()" />
+    <select [(ngModel)]="itemsPerPage" (change)="updatePagination()">
+      <option *ngFor="let option of [5, 10, 20]" [value]="option">{{ option }}</option>
+    </select>
+  
+    <ul>
+      <li *ngFor="let product of filteredProducts; trackBy: trackById">
+        {{ product.nombre }} - {{ product.descripcion }}
+        <button (click)="editProduct(product)">Editar</button>
+        <button (click)="deleteProduct(product.id)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+  
